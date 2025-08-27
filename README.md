@@ -17,8 +17,17 @@ The pipeline consists of preprocessing, feature selection, algorithm experiments
 ##  Repository Structure
 
 
-
 ---
+
+##  Setup
+
+Create and activate a conda environment:
+
+```bash
+conda create -n msc-project python=3.10
+conda activate msc-project
+pip install -r requirements.txt
+
 
 ##  Data
 
