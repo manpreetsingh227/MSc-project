@@ -13,6 +13,33 @@ It evaluates **bandit-based algorithms** for credit risk modeling, focusing on c
 The pipeline consists of preprocessing, feature selection, algorithm experiments (CF, OGD, RF), and analysis through notebooks.  
 
 ---
+## 📂 Repository Structure
+
+```text
+msc-project/
+├── src/
+│   ├── merged.py             
+│   ├── features.py         
+│   ├── NEWCF.py           
+│   ├── NEWOGD.py            
+│   ├── NEWRF.py             
+│
+├── jobs/                     
+│   ├── merged.pbs
+│   ├── features.pbs
+│   ├── cf.pbs
+│   ├── ogd.pbs
+│   ├── rf.pbs
+│
+├── notebooks/                
+│   └── analysis.ipynb
+│
+├── requirements.txt
+├── .gitignore
+└── README.md
+```
+---
+
 
 ## Workflow
 
@@ -26,9 +53,9 @@ The pipeline consists of preprocessing, feature selection, algorithm experiments
 
 3. **Algorithms**:  
    Run experiments using:  
-   - `src/NEWCF.py` (Cumulative refit)  
-   - `src/NEWOGD.py` (Online Gradient Descent)  
-   - `src/NEWRF.py` (Rolling refit)  
+   - `src/CF.py` (Cumulative refit)  
+   - `src/OGD.py` (Online Gradient Descent)  
+   - `src/RF.py` (Rolling refit)  
    Each supports modes (`oracle`, `bandit`, `epsilon_greedy`) and outputs CSV result files.  
 
 4. **Analysis**:  
