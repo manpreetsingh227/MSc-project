@@ -5,7 +5,7 @@
 
 ---
 
-##  Description
+## 📖 Description
 
 This repository contains the full pipeline for my MSc thesis.  
 It evaluates **bandit-based algorithms** for credit risk modeling, focusing on challenges such as **distribution drift** and **selective labels**.  
@@ -14,31 +14,7 @@ The pipeline consists of preprocessing, feature selection, algorithm experiments
 
 ---
 
-##  Repository Structure
-
-
----
-
-##  Setup
-
-Create and activate a conda environment:
-
-```bash
-conda create -n msc-project python=3.10
-conda activate msc-project
-pip install -r requirements.txt
-
-
-##  Data
-
-- Raw parquet shards (original dataset) should be placed in `data/` (not versioned).  
-- The preprocessing script (`src/merged.py`) produces **`notebooks/oldmerged.parquet`**.  
-- All algorithms (`NEWCF.py`, `NEWOGD.py`, `NEWRF.py`) use this file as input.  
-- On HPC systems, jobs may copy `oldmerged.parquet` to `$TMPDIR` for faster I/O.  
-
----
-
-##  Workflow
+## ⚙️ Workflow
 
 1. **Preprocessing**:  
    Run `src/merged.py` to generate `notebooks/oldmerged.parquet`.  
@@ -50,9 +26,9 @@ pip install -r requirements.txt
 
 3. **Algorithms**:  
    Run experiments using:  
-   - `src/CF.py` (Cumulative refit)  
-   - `src/OGD.py` (Online Gradient Descent)  
-   - `src/RF.py` (Rolling refit)  
+   - `src/NEWCF.py` (Cumulative refit)  
+   - `src/NEWOGD.py` (Online Gradient Descent)  
+   - `src/NEWRF.py` (Rolling refit)  
    Each supports modes (`oracle`, `bandit`, `epsilon_greedy`) and outputs CSV result files.  
 
 4. **Analysis**:  
@@ -60,7 +36,7 @@ pip install -r requirements.txt
 
 ---
 
-##  Dependencies
+## ⚙️ Dependencies
 
 - pandas  
 - numpy  
@@ -74,7 +50,7 @@ Dependencies are listed in `requirements.txt`.
 
 ---
 
-##  HPC Usage
+## 🖥️ HPC Usage
 
 Job submission scripts are provided in the `jobs/` directory.  
 Each script corresponds to one Python script in `src/`.  
@@ -88,7 +64,8 @@ Examples:
 
 Submit jobs with:  
 ```bash
-qsub jobs/<script>.pbs    
+qsub jobs/<script>.pbs     # if cluster uses PBS
+sbatch jobs/<script>.slurm # if cluster uses SLURM
 
 
 
