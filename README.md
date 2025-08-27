@@ -5,7 +5,7 @@
 
 ---
 
-## 📖 Description
+## Description
 
 This repository contains the full pipeline for my MSc thesis.  
 It evaluates **bandit-based algorithms** for credit risk modeling, focusing on challenges such as **distribution drift** and **selective labels**.  
@@ -14,7 +14,7 @@ The pipeline consists of preprocessing, feature selection, algorithm experiments
 
 ---
 
-## ⚙️ Workflow
+## Workflow
 
 1. **Preprocessing**:  
    Run `src/merged.py` to generate `notebooks/oldmerged.parquet`.  
@@ -36,7 +36,7 @@ The pipeline consists of preprocessing, feature selection, algorithm experiments
 
 ---
 
-## ⚙️ Dependencies
+## Dependencies
 
 - pandas  
 - numpy  
@@ -50,7 +50,7 @@ Dependencies are listed in `requirements.txt`.
 
 ---
 
-## 🖥️ HPC Usage
+## HPC Usage
 
 Job submission scripts are provided in the `jobs/` directory.  
 Each script corresponds to one Python script in `src/`.  
