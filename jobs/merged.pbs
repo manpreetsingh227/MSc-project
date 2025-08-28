@@ -1,0 +1,19 @@
+#!/bin/bash
+#PBS -N merged
+#PBS -l select=1:ncpus=4:mem=64gb
+#PBS -l walltime=04:00:00
+#PBS -j oe
+#PBS -o /rds/general/user/ms2524/home/MSc-project/logs/merged.out
+
+set -e
+
+source /rds/general/user/ms2524/home/miniforge3/etc/profile.d/conda.sh
+conda activate msc-project
+
+
+python /rds/general/user/ms2524/home/MSc-project/src/merged.py
+
+OUTDIR="/rds/general/user/ms2524/home/MSc-project/notebooks"
+mkdir -p "$OUTDIR"
+cp oldmerged.parquet "$OUTDIR/" || echo "No parquet found"
+

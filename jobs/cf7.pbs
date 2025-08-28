@@ -1,0 +1,54 @@
+#!/bin/bash
+#PBS -N cf_array
+#PBS -l select=1:ncpus=1:mem=40gb
+#PBS -l walltime=01:00:00
+#PBS -J 1-480
+#PBS -j oe
+#PBS -o /rds/general/user/ms2524/home/MSc-project/logs/
+
+set -e
+
+
+source /rds/general/user/ms2524/home/miniforge3/etc/profile.d/conda.sh
+conda activate msc-project
+
+
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+
+
+MODES=("oracle" "bandit" "epsilon_greedy" "epsilon_greedy" "epsilon_greedy" "epsilon_greedy")
+
+EPSILONS=("None" "None" "0.0001" "0.001" "0.01" "0.1")
+SEEDS=($(seq 42 80)) 
+
+
+INDEX=$PBS_ARRAY_INDEX
+MODE_IDX=$(( (INDEX - 1) / ${#SEEDS[@]} ))
+SEED_IDX=$(( (INDEX - 1) % ${#SEEDS[@]} ))
+
+MODE=${MODES[$MODE_IDX]}
+EPS=${EPSILONS[$MODE_IDX]}
+SEED=${SEEDS[$SEED_IDX]}
+
+
+
+
+cp /rds/general/user/ms2524/home/MSc-project/notebooks/oldmerged.parquet $TMPDIR/
+cd $TMPDIR
+
+python /rds/general/user/ms2524/home/MSc-project/src/CF.py \
+    --mode $MODE \
+    --epsilon $EPS \
+    --seed $SEED
+
+RESULT_DIR="/rds/general/user/ms2524/home/MSc-project/results/"
+mkdir -p "$RESULT_DIR"
+cp cf*.csv "$RESULT_DIR/" || echo "No CSV found"
+
+
+
+
+

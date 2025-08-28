@@ -1,0 +1,23 @@
+#!/bin/bash
+#PBS -N features
+#PBS -l select=1:ncpus=4:mem=64gb:ngpus=1
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o /rds/general/user/ms2524/home/MSc-project/logs/features.out
+
+set -e
+
+source /rds/general/user/ms2524/home/miniforge3/etc/profile.d/conda.sh
+conda activate msc-project
+
+
+# Copy merged parquet to TMPDIR
+cp /rds/general/user/ms2524/home/MSc-project/notebooks/oldmerged.parquet $TMPDIR/
+cd $TMPDIR
+
+python /rds/general/user/ms2524/home/MSc-project/src/features.py
+
+RESULT_DIR="/rds/general/user/ms2524/home/MSc-project/results/features"
+mkdir -p "$RESULT_DIR"
+cp importance.csv "$RESULT_DIR/" || echo "No CSV found"
+
