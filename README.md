@@ -19,9 +19,9 @@ msc-project/
 ├── src/
 │   ├── merged.py             
 │   ├── features.py         
-│   ├── NEWCF.py           
-│   ├── NEWOGD.py            
-│   ├── NEWRF.py             
+│   ├── CF.py           
+│   ├── OGD.py            
+│   ├── RF.py             
 │
 ├── jobs/                     
 │   ├── merged.pbs
