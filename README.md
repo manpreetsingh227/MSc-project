@@ -8,7 +8,6 @@
 ## Description
 
 This repository contains the full pipeline for my MSc thesis.  
-It evaluates **bandit-based algorithms** for credit risk modeling, focusing on challenges such as **distribution drift** and **selective labels**.  
 
 The pipeline consists of preprocessing, feature selection, algorithm experiments (CF, OGD, RF), and analysis through notebooks.  
 
