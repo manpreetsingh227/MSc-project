@@ -1,7 +1,7 @@
 # Bandit-based Approaches for Credit Risk Modeling under Drift and Selective Labels
 
 - **Author:** Manpreet Singh  
-- **Date:** 27/08/2025  
+- **Date:** 29/08/2025  
 
 ---
 
