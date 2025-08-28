@@ -90,8 +90,7 @@ Examples:
 
 Submit jobs with:  
 ```bash
-qsub jobs/<script>.pbs     # if cluster uses PBS
-sbatch jobs/<script>.slurm # if cluster uses SLURM
+qsub jobs/<script>.pbs     
 
 
 
